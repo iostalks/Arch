@@ -27,7 +27,7 @@ var BatchedBridge = (function() {
     // OC 执行 JS 的 Callback，顺带返回未处理的 JS->Native 消息
     // 由 Native 拿到 global 对象直接调用
     var invokeCallbackAndReturnFlushedQueue = function(callbackId, args) {
-        this.__invokeCallback(callbacks, args);
+        this.__invokeCallback(callbackId, args);
         return this.flushedQueue();
     }
 
