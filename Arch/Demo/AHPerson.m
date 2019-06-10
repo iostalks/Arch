@@ -18,9 +18,9 @@
 }
 
 AH_EXPORT_METHOD(run) {
-    NSLog(@"****************");
+    NSLog(@"******* JS Call Native *******");
     NSLog(@"Running man.");
-    NSLog(@"****************");
+    NSLog(@"******************************");
 }
 
 @end

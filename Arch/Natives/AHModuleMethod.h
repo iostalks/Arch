@@ -8,21 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "AHBridgeMethod.h"
 
-typedef NS_ENUM(NSUInteger, RCTNullability) {
-    RCTNullabilityUnspecified,
-    RCTNullable,
-    RCTNonnullable,
-};
-
-@interface RCTMethodArgument : NSObject
-
-@property (nonatomic, copy, readonly) NSString * _Nullable type;
-@property (nonatomic, readonly) RCTNullability nullability;
-@property (nonatomic, readonly) BOOL unused;
-
-@end
-
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AHModuleMethod : NSObject<AHBridgeMethod>

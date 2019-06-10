@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (JSValue *)synCallJSModule:(NSString *)module method:(NSString *)method args:(NSArray *)args error:(NSError **)error;
 
 // OC 执行 JS 的 callback，线程安全
-- (void)invokeJSCallback:(NSNumber *)callbackId;
+- (void)invokeJSCallback:(NSNumber *)callbackId arguments:(NSArray *)args;
 
 // JS 异步调用 OC，为什么要暴露出来？
 // ** 只能异步调用 **

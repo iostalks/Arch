@@ -18,7 +18,6 @@
 		AE1E7084228C0DB600FC9FDA /* AHModuleData.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1E7083228C0DB600FC9FDA /* AHModuleData.m */; };
 		AE1E7087228C0DDD00FC9FDA /* AHModuleMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1E7086228C0DDD00FC9FDA /* AHModuleMethod.m */; };
 		AE2B01C1229FED9100A23640 /* AHConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B01C0229FED9000A23640 /* AHConvert.m */; };
-		AE37442C22AD382B005E847D /* RCTParserUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AE37442B22AD382B005E847D /* RCTParserUtils.m */; };
 		AE91CC19229BF22B00DB947E /* RCTAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91CC18229BF22B00DB947E /* RCTAssert.m */; };
 		AEA63371228DD1420099F67E /* AHJSExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA63370228DD1420099F67E /* AHJSExecutor.m */; };
 		AEA633742292BEE60099F67E /* Arch.js in Resources */ = {isa = PBXBuildFile; fileRef = AEA633732292BEE60099F67E /* Arch.js */; };
@@ -48,8 +47,6 @@
 		AE1E7086228C0DDD00FC9FDA /* AHModuleMethod.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AHModuleMethod.m; sourceTree = "<group>"; };
 		AE2B01BF229FED9000A23640 /* AHConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AHConvert.h; sourceTree = "<group>"; };
 		AE2B01C0229FED9000A23640 /* AHConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AHConvert.m; sourceTree = "<group>"; };
-		AE37442A22AD382B005E847D /* RCTParserUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTParserUtils.h; sourceTree = "<group>"; };
-		AE37442B22AD382B005E847D /* RCTParserUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTParserUtils.m; sourceTree = "<group>"; };
 		AE91CC17229BF22B00DB947E /* RCTAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTAssert.h; sourceTree = "<group>"; };
 		AE91CC18229BF22B00DB947E /* RCTAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTAssert.m; sourceTree = "<group>"; };
 		AE91CC1A229BF26C00DB947E /* RCTDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTDefines.h; sourceTree = "<group>"; };
@@ -175,8 +172,6 @@
 		AE91CC15229BEB9700DB947E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AE37442A22AD382B005E847D /* RCTParserUtils.h */,
-				AE37442B22AD382B005E847D /* RCTParserUtils.m */,
 				AE91CC1A229BF26C00DB947E /* RCTDefines.h */,
 				AEA633762292C9C60099F67E /* RCTUtils.h */,
 				AEA633752292C9C60099F67E /* RCTUtils.m */,
@@ -278,7 +273,6 @@
 			files = (
 				AE1E7066228BFDE700FC9FDA /* ViewController.m in Sources */,
 				AE91CC19229BF22B00DB947E /* RCTAssert.m in Sources */,
-				AE37442C22AD382B005E847D /* RCTParserUtils.m in Sources */,
 				AEA633772292C9C60099F67E /* RCTUtils.m in Sources */,
 				AE1E7071228BFDEA00FC9FDA /* main.m in Sources */,
 				AE1E7063228BFDE700FC9FDA /* AppDelegate.m in Sources */,
