@@ -8,8 +8,8 @@ var BatchedBridge = (function() {
     const PARAMS = 2;
     const MIN_TIME_BETWEEN_FLUSHES_MS = 5;
 
-    // Native 直接调用 JS 的方法，没有返回值
-    // 由 Native 拿到 global 对象直接调用
+    // OC 直接调用 JS 的方法，没有返回值
+    // 由 OC 拿到 global 对象直接调用
     // 每次 Native 调用 JS 时，会顺带将消息队列中未执行的 JS->Native 返回给 Native 执行
     var callFunctionReturnFlushedQueue = function(module, method, args) {
         this.__callFunction(module, method, args);
@@ -17,7 +17,7 @@ var BatchedBridge = (function() {
     }
 
     // OC 直接调用 JS 的方法，有返回值
-    // 由 Native 拿到 global 对象直接调用
+    // 由 OC 拿到 global 对象直接调用
     // 每次 Native 调用 JS 时，会顺带将消息队列中未执行的 JS->Native 返回给 Native 执行
     var callFunctionReturnResultAndFlushedQueue = function(module, method, args) {
         const result = this.__callFunction(module, method, args);
@@ -25,7 +25,7 @@ var BatchedBridge = (function() {
     }
 
     // OC 执行 JS 的 Callback，顺带返回未处理的 JS->Native 消息
-    // 由 Native 拿到 global 对象直接调用
+    // 由 OC 拿到 global 对象直接调用
     var invokeCallbackAndReturnFlushedQueue = function(callbackId, args) {
         this.__invokeCallback(callbackId, args);
         return this.flushedQueue();
@@ -77,7 +77,7 @@ var BatchedBridge = (function() {
         this.queue[METHOD_INDEX].push(methodID);
         this.queue[PARAMS].push(params);
 
-        // 每次都有 ID，没啥用
+        // 调用 ID，没啥用
         this.callID++;
 
         const now = new Date().getTime();
@@ -90,7 +90,7 @@ var BatchedBridge = (function() {
         }
     }
 
-  // 注册暴露给 OC 的 JS 模块
+    // 注册暴露给 OC 的 JS 模块
     var registerJSModule = function(name, module) {
         this.callableModules[name] = module;
     }
@@ -138,7 +138,7 @@ var NativeModules = function() {
     function getMethod(moduleID, methodID, type) {
         var fn = null;
         if (type === 'promise') {
-        } else if (type === 'sync') {
+        } else if (type === 'sync') { // 几乎没有
         } else {
             // 这里只处理了异步调用的方法
             // fn 的参数为 module method params failCallback successCallback
@@ -157,7 +157,7 @@ var NativeModules = function() {
                 const callbackCount = hasSuccessCallback + hasErrorCallback;
                 args = args.slice(0, args.length - callbackCount);
                 
-                // 触发 Native 调用
+                // Native 调用
                 BatchedBridge.enqueueNativeCall(moduleID, methodID, args, onFail, onSuccess);
             }
         }
@@ -172,6 +172,7 @@ var NativeModules = function() {
     // 取出 Native 暴露给 JS 的模块
     // 该属性在 AHJSExecutor.m 文件注入的
     var bridgeConfig = global.__batchedBridgeConfig;
+    // [[name, constants, methods], ...]
     // 遍历每个模块，生成 JS 端调用信息
     (bridgeConfig.remoteModuleConfig || []).forEach(function(config, moduleID) {
         var info = getModule(config, moduleID);

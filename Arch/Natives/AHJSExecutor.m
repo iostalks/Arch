@@ -92,6 +92,7 @@ static NSThread* newJavaScriptThread() {
    asGlobalObjectNamed:(NSString *)objectName
               callback:(AHJSCompletionBlock)onComplete {
     [self executeBlockOnJavaScriptQueue:^{
+       
         JSGlobalContextRef ctx = self->_context.JSGlobalContextRef;
         JSStringRef execJSString = JSStringCreateWithCFString((__bridge CFStringRef)script);
         JSValueRef valueToInject = JSValueMakeFromJSONString(ctx, execJSString);

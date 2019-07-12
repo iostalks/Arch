@@ -163,7 +163,7 @@ NSString *AHBridgeModuleNameForClass(Class cls) {
 - (void)handleBuffer:(id)buffer {
     if (buffer && buffer != (id)kCFNull) {
         NSArray *requestsArray = [AHConvert NSArray:buffer];
-        if (requestsArray.count < RCTBridgeFieldParams) {
+        if (requestsArray.count <= RCTBridgeFieldParams) {
             NSLog(@"ERROR: JS 参数结构错误");
             return;
         }
