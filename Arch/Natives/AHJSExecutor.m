@@ -38,7 +38,7 @@
             [strongSelf->_bridge handleBuffer:calls];
         };
         self->_context[@"console"][@"log"] = ^(JSValue *v) {
-            NSLog(@"CNM: %@", v);
+            NSLog(@"console log: %@", v);
         };
     }];
 }

@@ -130,6 +130,7 @@ var NativeModules = function() {
            var methodType = isPromise ? 'promise' : (isSync ? 'sync' : 'async');
            module[methodName] = getMethod(moduleID, methodID, methodType);
         });
+        module['constants'] = constants;
 
         return { name: moduleName, module: module };
     }
@@ -196,6 +197,14 @@ Object.defineProperty(global, '__batchedBridge', {
 
 //////////////////////////////////// DEMO ///////////////////////////////////////////
 
+function print(obj) {
+    const strObj = Object.keys(obj).reduce((acc, key) => {
+        return acc + key + ': ' + obj[key] + ',';
+    }, '')
+    console.log('{ ' + strObj + ' }');
+}
+
 var person = NativeModules.Person;
 person.run(); // AHPerson.m 中 run 方法将会被调用
+print(person.constants);
 

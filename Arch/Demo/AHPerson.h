@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AHPerson : NSObject
+@interface AHPerson : NSObject<AHBridgeModule>
 @end
 
 NS_ASSUME_NONNULL_END

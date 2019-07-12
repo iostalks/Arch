@@ -17,9 +17,13 @@
     return @"Person";
 }
 
+- (NSDictionary<NSString *,id> *)constantsToExport {
+    return @{ @"name": @"Smallfly", @"age": @"18" };
+}
+
 AH_EXPORT_METHOD(run) {
     NSLog(@"******* JS Call Native *******");
-    NSLog(@"Running man.");
+    NSLog(@"Running souche man.");
     NSLog(@"******************************");
 }
 
