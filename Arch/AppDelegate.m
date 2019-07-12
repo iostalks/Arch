@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "AHBridge.h"
-#import <JavaScriptCore/JavaScriptCore.h>
 
 @interface AppDelegate ()
 @end
@@ -18,48 +17,12 @@
     AHBridge *_bridge;
 }
 
-- (void)runRunLoop {
-    NSLog(@"run loop");
-    @autoreleasepool {
-        // 设置当前线程名称
-//        pthread_setname_np([NSThread currentThread].name.UTF8String);
-        
-        // Set up a dummy runloop source to avoid spinning
-        CFRunLoopSourceContext noSpinCtx = {0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
-        CFRunLoopSourceRef noSpinSource = CFRunLoopSourceCreate(NULL, 0, &noSpinCtx);
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), noSpinSource, kCFRunLoopDefaultMode);
-        CFRelease(noSpinSource);
-        
-        // run the run loop
-        while (kCFRunLoopRunStopped != CFRunLoopRunInMode(kCFRunLoopDefaultMode, ((NSDate *)[NSDate distantFuture]).timeIntervalSinceReferenceDate, NO)) {
-            NSAssert(NO, @"not reached assertion"); // runloop spun. that's bad.
-        }
-    }
-}
-
-- (void)testJSCore {
-    JSContext *content = [[JSContext alloc] init];
-    content[@"console"][@"log"] = ^() {
-        NSLog(@"hhh");
-    };
-    [content evaluateScript:@"console.log('1')"];
-}
-
-- (id)play:(NSNumber *)number {
-    NSLog(@"play: %ld", number.integerValue);
-    return [NSString stringWithFormat:@"return: %ld", number.integerValue];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-
-//    [self testJSCore];
     _bridge = [[AHBridge alloc] init];
     [_bridge start];
     
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
